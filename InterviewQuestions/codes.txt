@@ -1,0 +1,176 @@
+// Java count occurences of substring
+public static int subStrOcc(String str,String sub)
+    {
+        int strSubLen = sub.length();
+        int strLen = str.length();
+        int jValue=0;
+        int subCount=0;
+        if(strSubLen>=1)
+        {
+        for(int iCtr =0; iCtr<strLen; iCtr++)
+        {
+            if(str.charAt(iCtr)==sub.charAt(jValue))
+            {                
+                jValue++; 
+                if(jValue==strSubLen)
+                {
+                    subCount++;
+                    jValue=0;
+                }
+            }
+            else
+            {
+                jValue=0;
+            }
+        }
+        }
+        return subCount;
+    }
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+        System.out.println(subStrOcc("lavavav", "av"));
+    }
+	
+	MERGE SORT
+	
+	public static void main(String a[]){
+         
+        int[] inputArr = {45,23,11,89,77,98,4,28,65,43};
+        MergeSort mms = new MergeSort();
+        mms.sort(inputArr);
+        for(int i:inputArr){
+            System.out.print(i);
+            System.out.print(" ");
+        }
+    }
+     
+    public void sort(int inputArr[]) {
+        this.array = inputArr;
+        this.length = inputArr.length;
+        this.tempMergArr = new int[length];
+        doMergeSort(0, length - 1);
+    }
+ 
+    private void doMergeSort(int lowerIndex, int higherIndex) {
+         
+        if (lowerIndex < higherIndex) {
+            int middle = lowerIndex + (higherIndex - lowerIndex) / 2;
+            // Below step sorts the left side of the array
+            doMergeSort(lowerIndex, middle);
+            // Below step sorts the right side of the array
+            doMergeSort(middle + 1, higherIndex);
+            // Now merge both sides
+            mergeParts(lowerIndex, middle, higherIndex);
+        }
+    }
+ 
+    private void mergeParts(int lowerIndex, int middle, int higherIndex) {
+ 
+        for (int i = lowerIndex; i <= higherIndex; i++) {
+            tempMergArr[i] = array[i];
+        }
+        int i = lowerIndex;
+        int j = middle + 1;
+        int k = lowerIndex;
+        while (i <= middle && j <= higherIndex) {
+            if (tempMergArr[i] <= tempMergArr[j]) {
+                array[k] = tempMergArr[i];
+                i++;
+            } else {
+                array[k] = tempMergArr[j];
+                j++;
+            }
+            k++;
+        }
+        while (i <= middle) {
+            array[k] = tempMergArr[i];
+            k++;
+            i++;
+        }
+		-------------------------------------------------------------------
+		
+		QUICK SORT
+		public static void swap (int A[], int x, int y)
+   {
+      int temp = A[x];
+      A[x] = A[y];
+      A[y] = temp;
+   }
+
+   // Reorganizes the given list so all elements less than the first are 
+   // before it and all greater elements are after it.                   
+   public static int partition(int A[], int f, int l)
+   {
+      int pivot = A[f];
+      while (f < l)
+      {
+         if (A[f] == pivot || A[l] == pivot) 
+         {
+            System.out.println("Only distinct integers allowed - C321");
+            System.out.println("students should ignore this if statement");
+            
+         }
+         while (A[f] < pivot) f++;
+         while (A[l] > pivot) l--;
+         swap (A, f, l);
+      }
+      return f;
+   }
+
+   public static void Quicksort(int A[], int f, int l)
+   {
+      if (f >= l) return;
+      int pivot_index = partition(A, f, l);
+      Quicksort(A, f, pivot_index);
+      Quicksort(A, pivot_index+1, l);
+   }
+
+   // Usage: java QuickSort [integer] ...
+   // All integers must be distinct
+   public static void main(String argv[])
+   {
+      int A[] = new int[argv.length];
+      for (int i=0 ; i < argv.length ; i++)
+         A[i] = Integer.parseInt(argv[i]);
+
+      Quicksort(A, 0, argv.length-1);
+
+      for (int i=0 ; i < argv.length ; i++) System.out.print(A[i] + " ");
+      System.out.println();
+   }
+   
+   -------------------------------------
+	BUBBLE SORT
+	    for(int j=0; j < a.length - i; j++) { // skip the already sorted largest elements
+      if(a[j] > a[j+1]) {
+         int temp = a[j];
+         a[j] = a[j+1];
+         a[j+1] = temp;
+         is_sorted = false;
+      }
+
+	  COUNTINg SORt
+	  or simplicity, consider the data in the range 0 to 9. 
+Input data: 1, 4, 1, 2, 7, 5, 2
+  1) Take a count array to store the count of each unique object.
+  Index:     0  1  2  3  4  5  6  7  8  9
+  Count:     0  2  2  0   1  1  0  1  0  0
+
+  2) Modify the count array such that each element at each index 
+  stores the sum of previous counts. 
+  Index:     0  1  2  3  4  5  6  7  8  9
+  Count:     0  2  4  4  5  6  6  7  7  7
+
+The modified count array indicates the position of each object in 
+the output sequence.
+ 
+  3) Output each object from the input sequence followed by 
+  decreasing its count by 1.
+  Process the input data: 1, 4, 1, 2, 7, 5, 2. Position of 1 is 2.
+  Put data 1 at index 2 in output. Decrease count by 1 to place 
+  next data 1 at an index 1 smaller than this index.
+  
+  BUCKET SORT
+  
+	
